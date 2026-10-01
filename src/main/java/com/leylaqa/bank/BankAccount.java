@@ -17,7 +17,9 @@ public class BankAccount {
     }
 
     public void withdraw(double amount) {
-        // BUG: Does not check for negative amounts!
+        if (amount <= 0) {
+            throw new IllegalArgumentException("Withdrawal must be positive!");
+        }
         if (amount > balance) {
             throw new IllegalArgumentException("Insufficient funds!");
         }
